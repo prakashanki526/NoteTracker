@@ -18,7 +18,13 @@ const InputField = (props) => {
         setInputData(val);
     }
 
-    async function handleClick(event){
+    function handleKeyPress(event){
+        if(event.code === "Enter"){
+            handleClick();
+        }
+    }
+
+    function handleClick(){
         if(!inputData){
             return;
         }
@@ -26,13 +32,13 @@ const InputField = (props) => {
         if(props.currentState){
             let newData = Bookmarks;
             newData.push({data: inputData, date: new Date().getDate()+"-"+ new Date().getMonth()+1+"-"+ new Date().getFullYear()+" "+new Date().getHours()+":"+new Date().getMinutes()});
-            await setBookmarks(newData);
+            setBookmarks(newData);
             navigate(`/bookmarks`);
         }
         else{
             let newData = notes;
             newData.push({data: inputData, date: new Date().getDate()+"-"+ new Date().getMonth()+1+"-"+ new Date().getFullYear()+" "+new Date().getHours()+":"+new Date().getMinutes()});
-            await setNotes(newData);
+            setNotes(newData);
             navigate(`/`);
         }
 
@@ -42,7 +48,7 @@ const InputField = (props) => {
     return (
         <div className={styles.lower}>
             <div className={styles.inputContainer}>
-                <input type="text" className={styles.inputField} placeholder={`Type a ${props.currentState===0 ? "daily note..." : "bookmark..."}`} onChange={handleChange} value={props.inputData}></input>
+                <input type="text" className={styles.inputField} placeholder={`Type a ${props.currentState===0 ? "daily note..." : "bookmark..."}`} onChange={handleChange} value={props.inputData} onKeyPress={handleKeyPress}></input>
             </div>
             <button className={styles.icon} onClick={handleClick}>
                 <img src={arrow} alt=""></img>
