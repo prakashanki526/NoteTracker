@@ -7,7 +7,7 @@ const NotesContainer = (props) => {
 
     return (
         <div className={styles.container}>
-            {currentState === 0 ? data.data : <a href={data.data}>{data.data}</a>}
+            {currentState === 0 ? data.data : <a href={data.data} target="_blank" rel="noreferrer">{data.data}</a>}
             <div className={styles.date}>
                 {data.date}
             </div>

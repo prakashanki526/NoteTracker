@@ -25,13 +25,13 @@ const InputField = (props) => {
 
         if(props.currentState){
             let newData = Bookmarks;
-            newData.push({data: inputData, date: new Date().getDate()+"-"+ new Date().getMonth()+1+"-"+ new Date().getFullYear()});
+            newData.push({data: inputData, date: new Date().getDate()+"-"+ new Date().getMonth()+1+"-"+ new Date().getFullYear()+" "+new Date().getHours()+":"+new Date().getMinutes()});
             await setBookmarks(newData);
             navigate(`/bookmarks`);
         }
         else{
             let newData = notes;
-            newData.push({data: inputData, date: new Date().getDate()+"-"+ new Date().getMonth()+1+"-"+ new Date().getFullYear()});
+            newData.push({data: inputData, date: new Date().getDate()+"-"+ new Date().getMonth()+1+"-"+ new Date().getFullYear()+" "+new Date().getHours()+":"+new Date().getMinutes()});
             await setNotes(newData);
             navigate(`/`);
         }
