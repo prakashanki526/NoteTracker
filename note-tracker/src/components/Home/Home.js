@@ -7,7 +7,7 @@ import {BrowserRouter,Routes,Route} from "react-router-dom";
 
 const Home = () => {
     const [currentState, setCurrentState] = useState(0);
-    const [notes, setNotes] = useState([{data:"absg",date:"snbs"}]);
+    const [notes, setNotes] = useState([]);
     const [Bookmarks, setBookmarks] = useState([]);
     const [inputData, setInputData] = useState("");
 
@@ -20,16 +20,6 @@ const Home = () => {
                 </div>
                 <div className={styles.right}>
                     <div className={styles.upper} >
-                        {/* {currentState === 0 ? notes.map((data,index) => {
-                            return(
-                                <NotesContainer data={data} />
-                            )
-                        }) : Bookmarks.map((data,index) => {
-                            return(
-                                <NotesContainer data={data} />
-                            )
-                        })} */}
-
                             <Routes>
                                 <Route path="/" element = {notes.map((data,index) => {
                                     return(
