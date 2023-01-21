@@ -14,7 +14,7 @@ const Home = () => {
             <div className={styles.main}>
                 <BrowserRouter>
                 <div className={styles.left}>
-                    <Menubar currentState={currentState} setCurrentState={setCurrentState} />
+                    <Menubar setCurrentState={setCurrentState} />
                 </div>
                 <div className={styles.right}>
                     <div className={styles.upper} >
@@ -31,7 +31,7 @@ const Home = () => {
                                 </Route>
                             </Routes>
                     </div>
-                    <InputField currentState={currentState} inputData={inputData} setInputData={setInputData} />
+                    <InputField inputData={inputData} setInputData={setInputData} />
                 </div>
                 </BrowserRouter>
             </div>

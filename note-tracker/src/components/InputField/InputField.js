@@ -1,12 +1,13 @@
 import React from 'react';
 import styles from './InputField.module.css';
 import arrow from '../../assets/arrow.svg';
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useLocation} from "react-router-dom";
 
 const InputField = (props) => {
     const inputData = props.inputData;
     const setInputData = props.setInputData;
 
+    const location = useLocation();
     const navigate = useNavigate();
 
     function handleChange(event){
@@ -27,7 +28,7 @@ const InputField = (props) => {
 
         let newData= [];
 
-        if(props.currentState){
+        if(location.pathname !== "/"){
             localStorage.bookmarks && newData.push(...JSON.parse(localStorage.bookmarks));
             newData.push({data: inputData, date: new Date().getDate()+"-"+ new Date().getMonth()+1+"-"+ new Date().getFullYear()+" "+new Date().getHours()+":"+new Date().getMinutes()});
             // localStorage.setItem("bookmarks", JSON.stringify(Bookmarks));
@@ -49,7 +50,7 @@ const InputField = (props) => {
     return (
         <div className={styles.lower}>
             <div className={styles.inputContainer}>
-                <input type="text" className={styles.inputField} placeholder={`Type a ${props.currentState===0 ? "daily note..." : "bookmark..."}`} onChange={handleChange} value={props.inputData} onKeyPress={handleKeyPress}></input>
+                <input type="text" className={styles.inputField} placeholder={`Type a ${location.pathname === "/" ? "daily note..." : "bookmark..."}`} onChange={handleChange} value={props.inputData} onKeyPress={handleKeyPress}></input>
             </div>
             <button className={styles.icon} onClick={handleClick}>
                 <img src={arrow} alt=""></img>
