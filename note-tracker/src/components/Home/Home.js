@@ -7,8 +7,6 @@ import {BrowserRouter,Routes,Route} from "react-router-dom";
 
 const Home = () => {
     const [currentState, setCurrentState] = useState(0);
-    const [notes, setNotes] = useState([]);
-    const [Bookmarks, setBookmarks] = useState([]);
     const [inputData, setInputData] = useState("");
 
     return (
@@ -33,7 +31,7 @@ const Home = () => {
                                 </Route>
                             </Routes>
                     </div>
-                    <InputField currentState={currentState} setCurrentState={setCurrentState} inputData={inputData} setInputData={setInputData} notes={notes} setNotes={setNotes} Bookmarks={Bookmarks} setBookmarks={setBookmarks} />
+                    <InputField currentState={currentState} inputData={inputData} setInputData={setInputData} />
                 </div>
                 </BrowserRouter>
             </div>
