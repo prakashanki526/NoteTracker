@@ -30,19 +30,22 @@ const InputField = (props) => {
         }
 
         if(props.currentState){
-            let newData = Bookmarks;
+            let newData = JSON.parse(localStorage.bookmarks);
             newData.push({data: inputData, date: new Date().getDate()+"-"+ new Date().getMonth()+1+"-"+ new Date().getFullYear()+" "+new Date().getHours()+":"+new Date().getMinutes()});
             setBookmarks(newData);
-            localStorage.setItem("bookmarks", JSON.stringify(Bookmarks));
+            // localStorage.setItem("bookmarks", JSON.stringify(Bookmarks));
+            localStorage.bookmarks = JSON.stringify(newData);
             navigate(`/bookmarks`);
         }
         else{
-            let newData = notes;
+            let newData= JSON.parse(localStorage.notes);
             newData.push({data: inputData, date: new Date().getDate()+"-"+ new Date().getMonth()+1+"-"+ new Date().getFullYear()+" "+new Date().getHours()+":"+new Date().getMinutes()});
             setNotes(newData);
-            localStorage.setItem("notes", JSON.stringify(notes));
+            // localStorage.setItem("notes", JSON.stringify(notes));
+            localStorage.notes = JSON.stringify(newData);
             navigate(`/`);
         }
+
 
         setInputData("");
     }

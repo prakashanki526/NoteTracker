@@ -11,9 +11,6 @@ const Home = () => {
     const [Bookmarks, setBookmarks] = useState([]);
     const [inputData, setInputData] = useState("");
 
-    // console.log(JSON.parse(localStorage.bookmarks));
-
-
     return (
         <div className={styles.body}>
             <div className={styles.main}>
