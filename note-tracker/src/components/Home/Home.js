@@ -11,6 +11,9 @@ const Home = () => {
     const [Bookmarks, setBookmarks] = useState([]);
     const [inputData, setInputData] = useState("");
 
+    // console.log(JSON.parse(localStorage.bookmarks));
+
+
     return (
         <div className={styles.body}>
             <div className={styles.main}>
@@ -21,12 +24,12 @@ const Home = () => {
                 <div className={styles.right}>
                     <div className={styles.upper} >
                             <Routes>
-                                <Route path="/" element = {notes.map((data,index) => {
+                                <Route path="/" element = {localStorage.notes && JSON.parse(localStorage.notes).map((data,index) => {
                                     return(
                                         <NotesContainer data={data} key={index} currentState={currentState} />
                                     )})} >
                                 </Route>
-                                <Route path="/bookmarks" element = { Bookmarks.map((data,index) => {
+                                <Route path="/bookmarks" element = {localStorage.bookmarks && JSON.parse(localStorage.bookmarks).map((data,index) => {
                                     return(
                                         <NotesContainer data={data} key={index} currentState={currentState} />
                                     )})}>

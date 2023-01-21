@@ -33,12 +33,14 @@ const InputField = (props) => {
             let newData = Bookmarks;
             newData.push({data: inputData, date: new Date().getDate()+"-"+ new Date().getMonth()+1+"-"+ new Date().getFullYear()+" "+new Date().getHours()+":"+new Date().getMinutes()});
             setBookmarks(newData);
+            localStorage.setItem("bookmarks", JSON.stringify(Bookmarks));
             navigate(`/bookmarks`);
         }
         else{
             let newData = notes;
             newData.push({data: inputData, date: new Date().getDate()+"-"+ new Date().getMonth()+1+"-"+ new Date().getFullYear()+" "+new Date().getHours()+":"+new Date().getMinutes()});
             setNotes(newData);
+            localStorage.setItem("notes", JSON.stringify(notes));
             navigate(`/`);
         }
 
