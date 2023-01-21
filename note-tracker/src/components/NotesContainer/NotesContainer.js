@@ -1,13 +1,14 @@
 import React from 'react';
 import styles from './NotesContainer.module.css';
+import { useLocation } from 'react-router-dom';
 
 const NotesContainer = (props) => {
     const data = props.data;
-    const currentState = props.currentState;
+    let location = useLocation();
 
     return (
         <div className={styles.container}>
-            {currentState === 0 ? data.data : <a href={data.data} target="_blank" rel="noreferrer">{data.data}</a>}
+            {location.pathname === "/" ? data.data : <a href={data.data.match("http") ? data.data : `https://${data.data}`} target="_blank" rel="noreferrer">{data.data}</a>}
             <div className={styles.date}>
                 {data.date}
             </div>

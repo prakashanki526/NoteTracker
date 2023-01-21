@@ -6,7 +6,6 @@ import InputField from '../InputField/InputField';
 import {BrowserRouter,Routes,Route} from "react-router-dom";
 
 const Home = () => {
-    const [currentState, setCurrentState] = useState(0);
     const [inputData, setInputData] = useState("");
 
     return (
@@ -14,19 +13,19 @@ const Home = () => {
             <div className={styles.main}>
                 <BrowserRouter>
                 <div className={styles.left}>
-                    <Menubar setCurrentState={setCurrentState} />
+                    <Menubar />
                 </div>
                 <div className={styles.right}>
                     <div className={styles.upper} >
                             <Routes>
                                 <Route path="/" element = {localStorage.notes && JSON.parse(localStorage.notes).map((data,index) => {
                                     return(
-                                        <NotesContainer data={data} key={index} currentState={currentState} />
+                                        <NotesContainer data={data} key={index} />
                                     )})} >
                                 </Route>
                                 <Route path="/bookmarks" element = {localStorage.bookmarks && JSON.parse(localStorage.bookmarks).map((data,index) => {
                                     return(
-                                        <NotesContainer data={data} key={index} currentState={currentState} />
+                                        <NotesContainer data={data} key={index} />
                                     )})}>
                                 </Route>
                             </Routes>
