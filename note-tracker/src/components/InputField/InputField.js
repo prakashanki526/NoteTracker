@@ -29,8 +29,10 @@ const InputField = (props) => {
             return;
         }
 
+        let newData= [];
+
         if(props.currentState){
-            let newData = JSON.parse(localStorage.bookmarks);
+            localStorage.bookmarks && newData.push(...JSON.parse(localStorage.bookmarks));
             newData.push({data: inputData, date: new Date().getDate()+"-"+ new Date().getMonth()+1+"-"+ new Date().getFullYear()+" "+new Date().getHours()+":"+new Date().getMinutes()});
             setBookmarks(newData);
             // localStorage.setItem("bookmarks", JSON.stringify(Bookmarks));
@@ -38,7 +40,7 @@ const InputField = (props) => {
             navigate(`/bookmarks`);
         }
         else{
-            let newData= JSON.parse(localStorage.notes);
+            localStorage.notes && newData.push(...JSON.parse(localStorage.notes));
             newData.push({data: inputData, date: new Date().getDate()+"-"+ new Date().getMonth()+1+"-"+ new Date().getFullYear()+" "+new Date().getHours()+":"+new Date().getMinutes()});
             setNotes(newData);
             // localStorage.setItem("notes", JSON.stringify(notes));
